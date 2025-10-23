@@ -6,6 +6,38 @@ Ce projet met en place un pipeline de machine learning orchestré avec **Apache 
 
 ## 📁 Structure du projet
 
+```bash
+
+Dag_Airflow_ML/
+├── dags/
+│ ├── train_model_dag.py # DAG principal orchestrant le pipeline ML
+│ ├── get-data.py # Script de récupération des données
+│ └── ml_tasks.py # Fonctions Python : entraînement, création de tables, échec simulé
+│
+├── config/
+│ └── airflow.cfg # Configuration Airflow personnalisée
+│
+├── data/
+│ └── advertising.csv # Jeu de données source pour l’entraînement
+│
+├── logs/ # Logs générés par Airflow (créés au runtime)
+│
+├── ml_logistical_regression/
+│ └── train_model.py # Script d’entraînement du modèle de régression logistique
+│
+├── output/
+│ └── model.pkl # Modèle entraîné sauvegardé
+│
+├── plugins/ # Plugins Airflow personnalisés
+│
+├── requirements.txt # Dépendances Python (Airflow, providers, etc.)
+├── docker-compose.yaml # Stack Docker : Airflow, Postgres, Redis, etc.
+├── .env # Variables d’environnement (si utilisé)
+├── .venv/ # Environnement virtuel Python (non versionné)
+├── README.md # Documentation du projet
+└── .gitignore # Fichiers/dossiers à exclure du versionnement
+
+```
 
 ---
 
@@ -44,41 +76,6 @@ pip install -r requirements.txt
 
 # 4. Lancer les services Airflow + Postgres
 docker compose up --build
-```
-
-## 📁 Arborescence du projet
-
-```bash
-
-Dag_Airflow_ML/
-├── dags/
-│ ├── train_model_dag.py # DAG principal orchestrant le pipeline ML
-│ ├── get-data.py # Script de récupération des données
-│ └── ml_tasks.py # Fonctions Python : entraînement, création de tables, échec simulé
-│
-├── config/
-│ └── airflow.cfg # Configuration Airflow personnalisée
-│
-├── data/
-│ └── advertising.csv # Jeu de données source pour l’entraînement
-│
-├── logs/ # Logs générés par Airflow (créés au runtime)
-│
-├── ml_logistical_regression/
-│ └── train_model.py # Script d’entraînement du modèle de régression logistique
-│
-├── output/
-│ └── model.pkl # Modèle entraîné sauvegardé
-│
-├── plugins/ # Plugins Airflow personnalisés
-│
-├── requirements.txt # Dépendances Python (Airflow, providers, etc.)
-├── docker-compose.yaml # Stack Docker : Airflow, Postgres, Redis, etc.
-├── .env # Variables d’environnement (si utilisé)
-├── .venv/ # Environnement virtuel Python (non versionné)
-├── README.md # Documentation du projet
-└── .gitignore # Fichiers/dossiers à exclure du versionnement
-
 ```
 
 ## 🌐 Interface Airflow
